@@ -1,4 +1,3 @@
-# Nameplates
+# React Social
 
-[![EditorConfig](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
-](https://github.com/scorn-da/react-social/actions?query=workflow%3AEditorConfig)
+[![Generic badge](https://img.shields.io/badge/EditorConfig-Passing-g.svg)](https://github.com/scorn-da/react-social/actions?query=workflow%3AEditorConfig)
