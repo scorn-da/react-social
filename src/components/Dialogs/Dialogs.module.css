@@ -1,0 +1,24 @@
+.dialogsWrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.dialogs {
+  display: grid;
+  grid-row-gap: 8px;
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+}
+
+.dialog.active {
+  color: gold;
+}
+
+.messages {
+  display: grid;
+  grid-row-gap: 8px;
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+}
