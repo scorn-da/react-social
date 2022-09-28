@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "editorconfig-checker": "^4.0.2"
+    "editorconfig-checker": "^4.0.2",
+    "react-router-dom": "^6.4.1"
   }
 }
