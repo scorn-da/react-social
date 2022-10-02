@@ -4,17 +4,25 @@ import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 
 const Dialogs = () => {
+  const dialogs = [
+    { name: "Vasya", id: 1, },
+    { name: "Fedya", id: 2, },
+    { name: "Masha", id: 3, },
+  ];
+
+  const messages = [
+    { text: "My message", id: 1, },
+    { text: "My new message", id: 2, },
+    { text: "My current message", id: 3, },
+  ];
+
   return (
       <section className={styles.dialogsWrapper}>
         <ul className={styles.dialogs}>
-          <Dialog name="Vasya" id="1" />
-          <Dialog name="Fedya" id="2" />
-          <Dialog name="Masha" id="3" />
+          { dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id} />) }
         </ul>
         <ul className={styles.messages}>
-          <Message text="My message" id="1" />
-          <Message text="My new message" id="2" />
-          <Message text="My current message" id="3" />
+          { messages.map(message => <Message text={message.text} id={message.id} />) }
         </ul>
       </section>
   );
