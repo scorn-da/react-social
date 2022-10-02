@@ -2,14 +2,14 @@ import React from 'react';
 import styles from './Profile.module.css';
 import Posts from "./Posts/Posts";
 import PostsCreator from "./PostsCreator/PostsCreator";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
   return (
       <>
-        <img src="https://phonoteka.org/uploads/posts/2021-05/1621731417_1-phonoteka_org-p-izumrudnie-listya-fon-1.jpg"
-             alt=""/>
-        <PostsCreator/>
-        <Posts/>
+        <ProfileInfo bio="Hi! My name is. Hi! My name is. Hi! My name is." />
+        <PostsCreator />
+        <Posts />
       </>
   );
 };

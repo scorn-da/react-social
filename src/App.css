@@ -17,6 +17,8 @@ html, body, body > #root {
 }
 
 .appWrapper * {
+  color: #fff;
+
   background-color: crimson;
 }
 

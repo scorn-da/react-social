@@ -1,24 +1,20 @@
 import React from 'react';
 import styles from './Dialogs.module.css';
+import Dialog from "./Dialog/Dialog";
+import Message from "./Message/Message";
 
 const Dialogs = () => {
   return (
       <section className={styles.dialogsWrapper}>
         <ul className={styles.dialogs}>
-          <li className={styles.dialog + ' ' + styles.active} key="d1">
-            Name 1
-          </li>
-          <li className={styles.dialog} key="d2">
-            Name 2
-          </li>
+          <Dialog name="Vasya" id="1" />
+          <Dialog name="Fedya" id="2" />
+          <Dialog name="Masha" id="3" />
         </ul>
         <ul className={styles.messages}>
-          <li className={styles.message} key="m1">
-            Message 1
-          </li>
-          <li className={styles.message} key="m2">
-            Message 2
-          </li>
+          <Message text="My message" id="1" />
+          <Message text="My new message" id="2" />
+          <Message text="My current message" id="3" />
         </ul>
       </section>
   );

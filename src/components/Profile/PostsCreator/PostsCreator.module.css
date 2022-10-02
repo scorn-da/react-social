@@ -1,0 +1,29 @@
+.creator {
+  display: grid;
+  grid-row-gap: 12px;
+  grid-auto-flow: row;
+  margin: 0 0 12px;
+}
+
+.creator textarea {
+  width: 480px;
+
+  color: #fff;
+
+  border: 1px solid #fff;
+}
+
+.buttonsWrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 12px;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+}
+
+.buttonsWrapper button {
+  padding: 8px;
+
+  color: #fff;
+
+  border: 1px solid #fff;
+}
