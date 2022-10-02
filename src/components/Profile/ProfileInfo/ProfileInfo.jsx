@@ -6,7 +6,7 @@ const ProfileInfo = ({ bio }) => {
       <div className={styles.info}>
         <div>
           <img className={styles.avatar} src="https://phonoteka.org/uploads/posts/2021-05/1621731417_1-phonoteka_org-p-izumrudnie-listya-fon-1.jpg"
-               alt=""/>
+            alt=""/>
         </div>
         <div className={styles.bio}>
           {bio}
