@@ -7,15 +7,15 @@ import Profile from "./components/Profile/Profile";
 import { Route, Routes } from "react-router-dom";
 import Dialogs from "./components/Dialogs/Dialogs";
 
-function App() {
+function App(props) {
   return (
     <div className="appWrapper">
       <Header/>
       <Navbar/>
       <Content>
         <Routes>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route exact path="/dialogs" element={<Dialogs/>}/>
+          <Route path="/profile" element={<Profile state={props.state.profilePage} />} />
+          <Route exact path="/dialogs" element={<Dialogs state={props.state.dialogsPage} />} />
         </Routes>
       </Content>
       <Footer/>

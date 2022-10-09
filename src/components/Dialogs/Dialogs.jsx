@@ -3,19 +3,8 @@ import styles from './Dialogs.module.css';
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 
-const Dialogs = () => {
-  const dialogs = [
-    { name: "Vasya", id: 1, },
-    { name: "Fedya", id: 2, },
-    { name: "Masha", id: 3, },
-  ];
-
-  const messages = [
-    { text: "My message", id: 1, },
-    { text: "My new message", id: 2, },
-    { text: "My current message", id: 3, },
-  ];
-
+const Dialogs = ({ state }) => {
+  const {dialogs, messages} = state;
   return (
       <section className={styles.dialogsWrapper}>
         <ul className={styles.dialogs}>
