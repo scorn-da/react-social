@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Post.module.css';
 
-const Post = ({id, text}) => {
+const Post = ({ text }) => {
   return (
-      <li key={id}>{text}</li>
+      <li>{text}</li>
   );
 };
 

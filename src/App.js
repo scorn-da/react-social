@@ -14,7 +14,7 @@ function App(props) {
       <Navbar/>
       <Content>
         <Routes>
-          <Route path="/profile" element={<Profile state={props.state.profilePage} addPost={props.addPost} />} />
+          <Route path="/profile" element={<Profile state={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
           <Route exact path="/dialogs" element={<Dialogs state={props.state.dialogsPage} />} />
         </Routes>
       </Content>

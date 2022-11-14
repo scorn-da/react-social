@@ -8,7 +8,7 @@ const Posts = ({ posts }) => {
   return (
       <ul className={styles.posts}>
         {
-          posts.map(post => <Post key={post.id} text={post.text}/>)
+          posts.map(post => <Post key={post.id} text={post.text} />)
         }
       </ul>
   );

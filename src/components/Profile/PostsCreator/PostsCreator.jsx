@@ -1,20 +1,26 @@
 import React from 'react';
 import styles from './PostsCreator.module.css';
 
-const PostsCreator = ({ addPost }) => {
+const PostsCreator = ({ newPostText, updateNewPostText, addPost }) => {
   const newPostField = React.createRef();
 
-  const handleClick = () => {
+  const onPostChange = () => {
     const text = newPostField.current.value;
-    addPost(text);
+    updateNewPostText(text);
+  }
+
+  const onAddButtonClick = (evt) => {
+    evt.preventDefault();
+    addPost();
+    updateNewPostText('');
   };
 
   return (
       <form className={styles.creator}>
-        <textarea rows="4" ref={newPostField} />
+        <textarea rows="4" ref={newPostField} onChange={onPostChange} value={newPostText} />
         <div className={styles.buttonsWrapper}>
-          <button onClick={handleClick}>Add a post</button>
-          <button>Clear</button>
+          <button onClick={onAddButtonClick} type="button">Add a post</button>
+          <button type="button">Clear</button>
         </div>
       </form>
   );

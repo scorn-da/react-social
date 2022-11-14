@@ -4,13 +4,13 @@ import Posts from "./Posts/Posts";
 import PostsCreator from "./PostsCreator/PostsCreator";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({ state, addPost }) => {
-  const posts = state.posts;
+const Profile = ({ state, updateNewPostText, addPost }) => {
+  const { posts, newPostText} = state;
 
   return (
       <>
         <ProfileInfo bio="Hi! My name is. Hi! My name is. Hi! My name is." />
-        <PostsCreator addPost={addPost} />
+        <PostsCreator newPostText={newPostText} addPost={addPost} updateNewPostText={updateNewPostText} />
         <Posts posts={posts}/>
       </>
   );
