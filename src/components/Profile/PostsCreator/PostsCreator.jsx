@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './PostsCreator.module.css';
 
-const PostsCreator = ({ newPostText, updateNewPostText, addPost }) => {
+const PostsCreator = ({ newPostText, dispatch }) => {
   const newPostField = React.createRef();
 
   const onPostChange = () => {
     const text = newPostField.current.value;
-    updateNewPostText(text);
+    dispatch({type: 'UPDATE-NEW-POST-TEXT', newPostText: text});
   }
 
   const onAddButtonClick = (evt) => {
     evt.preventDefault();
-    addPost();
-    updateNewPostText('');
+    dispatch({type: 'ADD-POST'});
+    dispatch({type: 'UPDATE-NEW-POST-TEXT', newPostText: ''});
   };
 
   return (
