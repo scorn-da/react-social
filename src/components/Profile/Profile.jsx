@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Profile.module.css';
-import Posts from "./Posts/Posts";
-import PostsCreator from "./PostsCreator/PostsCreator";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import styles from 'src/components/Profile/Profile.module.css';
+import ProfileInfo from "src/components/Profile/ProfileInfo/ProfileInfo";
+import PostsCreator from "src/components/Profile/PostsCreator/PostsCreator";
+import Posts from "src/components/Profile/Posts/Posts";
 
 const Profile = ({ state, dispatch }) => {
   const { posts, newPostText} = state;

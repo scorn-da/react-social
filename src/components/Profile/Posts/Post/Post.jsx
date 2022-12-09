@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Post.module.css';
+import styles from 'src/components/Profile/Posts/Post/Post.module.css';
 
 const Post = ({ text }) => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Dialogs.module.css';
-import Dialog from "./Dialog/Dialog";
-import Message from "./Message/Message";
-import MessagesCreator from "./MessagesCreator/MessagesCreator";
+import styles from 'src/components/Dialogs/Dialogs.module.css';
+import Dialog from "src/components/Dialogs/Dialog/Dialog";
+import Message from "src/components/Dialogs/Message/Message";
+import MessagesCreator from "src/components/Dialogs/MessagesCreator/MessagesCreator";
 
 const Dialogs = ({ state, dispatch }) => {
   const { dialogs, messages, newMessageText } = state;

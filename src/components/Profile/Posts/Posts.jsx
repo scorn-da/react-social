@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styles from './Posts.module.css';
-import Post from './Post/Post';
+import styles from 'src/components/Profile/Posts/Posts.module.css';
+import Post from "src/components/Profile/Posts/Post/Post";
 
 const Posts = ({posts}) => {
 

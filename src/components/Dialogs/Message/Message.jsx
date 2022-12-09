@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Message.module.css';
+import styles from 'src/components/Dialogs/Message/Message.module.css';
 
 const Message = ({ text, id}) => {
   return (

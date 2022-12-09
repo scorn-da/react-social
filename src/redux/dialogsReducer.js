@@ -1,4 +1,4 @@
-import { actionTypes } from "../utils/consts";
+import { actionTypes } from "src/utils/consts";
 
 const dialogsReducer = (state, action) => {
 

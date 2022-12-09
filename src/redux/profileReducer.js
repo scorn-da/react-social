@@ -1,4 +1,4 @@
-import { actionTypes } from "../utils/consts";
+import { actionTypes } from "src/utils/consts";
 
 const profileReducer = (state, action) => {
   switch (action.type) {
