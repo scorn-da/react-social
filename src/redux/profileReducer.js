@@ -1,6 +1,24 @@
 import { actionTypes } from "src/utils/consts";
 
-const profileReducer = (state, action) => {
+const initialState = {
+  posts: [
+    {
+      id: 1,
+      text: 'abc',
+    },
+    {
+      id: 2,
+      text: 'my text',
+    },
+    {
+      id: 3,
+      text: 'That\'s interesting',
+    },
+  ],
+  newPostText: 'bla-bla',
+};
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_POST:
       const newPost = {
