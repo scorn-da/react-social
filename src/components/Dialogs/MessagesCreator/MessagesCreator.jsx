@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './MessagesCreator.module.css';
-import { sendMessageCreator, updateNewMessageCreator, } from "../../../redux/state.js";
+import { sendMessageCreator, updateNewMessageCreator, } from "../../../redux/dialogsReducer";
 import classNames from "classnames";
 
 const MessagesCreator = ({ className,  newMessageText, dispatch }) => {

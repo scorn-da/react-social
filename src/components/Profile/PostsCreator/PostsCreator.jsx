@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PostsCreator.module.css';
-import { addPostCreator, updateNewPostCreator } from "../../../redux/state.js";
+import { addPostCreator, updateNewPostCreator } from "../../../redux/profileReducer";
 
 const PostsCreator = ({ newPostText, dispatch }) => {
   const newPostField = React.createRef();
