@@ -1,20 +1,17 @@
 import React from 'react';
 import styles from 'src/components/Profile/PostsCreator/PostsCreator.module.css';
-import { addPostCreator, updateNewPostCreator } from "src/redux/profileReducer";
 
-const PostsCreator = ({ newPostText, dispatch }) => {
+const PostsCreator = ({ newPostText, updateNewPostText, addPost }) => {
   const newPostField = React.createRef();
 
   const onPostChange = () => {
     const text = newPostField.current.value;
-    const action = updateNewPostCreator(text);
-    dispatch(action);
+    updateNewPostText(text);
   }
 
   const onAddButtonClick = (evt) => {
     evt.preventDefault();
-    dispatch(addPostCreator());
-    dispatch(updateNewPostCreator(''));
+    addPost();
   };
 
   return (
