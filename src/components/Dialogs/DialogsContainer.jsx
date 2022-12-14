@@ -1,43 +1,24 @@
-import React from 'react';
-import styles from 'src/components/Dialogs/Dialogs.module.css';
-import Dialog from "src/components/Dialogs/Dialog/Dialog";
-import Message from "src/components/Dialogs/Message/Message";
-import MessagesCreator from "src/components/Dialogs/MessagesCreator/MessagesCreator";
-
+import { connect } from "react-redux";
+import Dialogs from "src/components/Dialogs/Dialogs/Dialogs";
 import { sendMessageCreator, updateNewMessageCreator } from "src/redux/dialogsReducer";
-import StoreContext from "src/StoreContext";
 
-const DialogsContainer = () => {
+const mapStateToProps = (state) => {
+  return {
+    dialogsPage: state.dialogsPage,
+  };
+}
 
-  return (
-    <StoreContext.Concumer>
-      {(store) => {
-        const state = store.getState().dialogsPage;
-        const { dialogs, messages, newMessageText } = state;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendMessage: () => {
+      dispatch(sendMessageCreator());
+    },
+    updateNewMessageText: (text) => {
+      dispatch(updateNewMessageCreator(text));
+    },
+  };
+}
 
-        const sendMessage = () => {
-          store.dispatch(sendMessageCreator());
-        }
-
-        const updateNewMessageText = (text) => {
-          store.dispatch(updateNewMessageCreator(text));
-        }
-
-        return (
-          <section className={styles.dialogsWrapper}>
-            <ul className={styles.dialogs}>
-              {dialogs.map(dialog => <Dialog name={dialog.name} key={dialog.id}/>)}
-            </ul>
-            <ul className={styles.messages}>
-              {messages.map(message => <Message text={message.text} key={message.id}/>)}
-            </ul>
-            <MessagesCreator className={styles.messagesCreator} newMessageText={newMessageText} sendMessage={sendMessage}
-                             updateNewMessageText={updateNewMessageText}/>
-          </section>
-        )
-      }}
-    </StoreContext.Concumer>
-  );
-};
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

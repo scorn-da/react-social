@@ -3,7 +3,7 @@ import styles from 'src/components/Profile/Posts/Post/Post.module.css';
 
 const Post = ({ text }) => {
   return (
-      <li>{text}</li>
+      <li className={styles.post}>{text}</li>
   );
 };
 

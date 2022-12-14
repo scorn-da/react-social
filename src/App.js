@@ -2,10 +2,10 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import ProfileContainer from "src/components/Profile/ProfileContainer";
 import { Route, Routes } from "react-router-dom";
-import DialogsContainer from "src/components/Dialogs/DialogsContainer";
 import Content from "src/components/Content/Content";
+import DialogsPage from "src/pages/DialogsPage";
+import ProfilePage from "src/pages/ProfilePage";
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
       <Navbar/>
       <Content>
         <Routes>
-          <Route path="/profile" element={<ProfileContainer />} />
-          <Route exact path="/dialogs" element={<DialogsContainer />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route exact path="/dialogs" element={<DialogsPage />} />
         </Routes>
       </Content>
       <Footer/>
