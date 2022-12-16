@@ -4,8 +4,9 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import Content from "src/components/Content/Content";
-import DialogsPage from "src/pages/DialogsPage";
-import ProfilePage from "src/pages/ProfilePage";
+import Dialogs from "src/pages/dialogs/Dialogs";
+import Profile from "src/pages/profile/Profile";
+import Users from "src/pages/users/Users";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <Navbar/>
       <Content>
         <Routes>
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route exact path="/dialogs" element={<DialogsPage />} />
+          <Route path="/profile" element={<Profile/>}/>
+          <Route exact path="/dialogs" element={<Dialogs/>}/>
+          <Route exact path="/users" element={<Users/>}/>
         </Routes>
       </Content>
       <Footer/>

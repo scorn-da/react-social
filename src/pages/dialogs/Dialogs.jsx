@@ -1,9 +1,9 @@
 import DialogsContainer from "src/components/Dialogs/DialogsContainer";
 
-const DialogsPage = () => {
+const Dialogs = () => {
   return (
     <DialogsContainer />
   );
 };
 
-export default DialogsPage;
+export default Dialogs;
