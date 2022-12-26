@@ -55,6 +55,9 @@ const initialState = {
       onlineStatus: 'online',
     },*/
   ],
+  pageSize: 5,
+  totalUsers: 20,
+  currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -82,7 +85,17 @@ const usersReducer = (state = initialState, action) => {
     case actionTypes.SET_USERS:
       return {
         ...state,
-        users: [...state.users, ...action.users],
+        users: [...action.users],
+      }
+    case actionTypes.SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      }
+    case actionTypes.SET_USERS_TOTAL:
+      return {
+        ...state,
+        totalUsers: action.usersTotal,
       }
     default:
       return state;
@@ -103,10 +116,24 @@ export const unfollowCreator = (userId) => {
   }
 };
 
-export const setUsers = (users) => {
+export const setUsersCreator = (users) => {
   return {
     type: actionTypes.SET_USERS,
     users,
+  }
+};
+
+export const setCurrentPageCreator = (currentPage) => {
+  return {
+    type: actionTypes.SET_CURRENT_PAGE,
+    currentPage,
+  }
+};
+
+export const setTotalUsersCreator = (usersTotal) => {
+  return {
+    type: actionTypes.SET_USERS_TOTAL,
+    usersTotal,
   }
 };
 
