@@ -3,8 +3,6 @@ import styles from 'src/components/Users/User/User.module.css';
 import userIcon from 'src/assets/images/user_icon.svg';
 
 const User = ({ user, follow, unfollow }) => {
-  console.log(user);
-
   return (
     <li className={styles.user}>
       <p>

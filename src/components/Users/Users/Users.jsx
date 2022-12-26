@@ -4,13 +4,12 @@ import styles from 'src/components/Users/Users/Users.module.css';
 import axios from "axios";
 
 class Users extends React.Component {
-  constructor (props) {
-    super(props);
-
+  componentDidMount() {
     axios('https://social-network.samuraijs.com/api/1.0/users/').then(response => {
       this.props.setUsers(response.data.items);
     });
   }
+
   render = () => {
     return (<section>
       <ul className={styles.users}>
