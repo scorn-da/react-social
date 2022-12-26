@@ -1,16 +1,19 @@
 import React from 'react';
 import styles from 'src/components/Users/User/User.module.css';
+import userIcon from 'src/assets/images/user_icon.svg';
 
 const User = ({ user, follow, unfollow }) => {
+  console.log(user);
+
   return (
     <li className={styles.user}>
       <p>
-        <img src={user.photo} alt={`${user.name}'s profile`}/>
+        <img src={user.photo ?? userIcon} width="32" alt={`${user.name}'s profile`} />
         <span>
-          <b>{`${user.name}, ${user.age}`}</b>
-          <i>{`${user.location.country}, ${user.location.city}`}</i>
+          <b>{`${user.name}${user.age ? ', ' + user.age : ''}`}</b>
+          {/*<i>{`${user.location.country}, ${user.location.city}`}</i>
           <i>{user.onlineStatus}</i>
-          <i>{user.following}</i>
+          <i>{user.following}</i>*/}
           {
             user.following ?
               <button onClick={() => {

@@ -9,7 +9,7 @@ const updateFollowingStatus = (user, followingValue) => {
 
 const initialState = {
   users: [
-    {
+    /*{
       id: 1,
       name: 'Vadim',
       age: 23,
@@ -53,12 +53,12 @@ const initialState = {
       location: { city: 'Tel Aviv', country: 'Israel' },
       following: true,
       onlineStatus: 'online',
-    },
+    },*/
   ],
 };
 
 const usersReducer = (state = initialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case actionTypes.FOLLOW:
       return {
         ...state,
