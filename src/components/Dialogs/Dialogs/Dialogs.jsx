@@ -4,7 +4,7 @@ import Message from "src/components/Dialogs/Message/Message";
 import MessagesCreator from "src/components/Dialogs/MessagesCreator/MessagesCreator";
 import React from "react";
 
-const Dialogs = ({ dialogsPage, sendMessage, updateNewMessageText }) => {
+const Dialogs = ({ dialogsPage, sendMessage, updateNewMessage }) => {
   const { dialogs, messages, newMessageText } = dialogsPage;
 
   return (
@@ -16,7 +16,7 @@ const Dialogs = ({ dialogsPage, sendMessage, updateNewMessageText }) => {
         {messages.map(message => <Message text={message.text} key={message.id}/>)}
       </ul>
       <MessagesCreator className={styles.messagesCreator} newMessageText={newMessageText} sendMessage={sendMessage}
-                       updateNewMessageText={updateNewMessageText}/>
+                       updateNewMessage={updateNewMessage}/>
     </section>
   )
 }

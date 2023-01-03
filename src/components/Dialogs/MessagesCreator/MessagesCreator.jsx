@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from "classnames";
 import styles from "src/components/Dialogs/MessagesCreator/MessagesCreator.module.css";
 
-const MessagesCreator = ({ className, newMessageText, updateNewMessageText, sendMessage }) => {
+const MessagesCreator = ({ className, newMessageText, updateNewMessage, sendMessage }) => {
   const onSendMessageClick = (evt) => {
     evt.preventDefault();
     sendMessage();
@@ -10,7 +10,7 @@ const MessagesCreator = ({ className, newMessageText, updateNewMessageText, send
 
   const onMessageChange = (evt) => {
     const text = evt.target.value;
-    updateNewMessageText(text);
+    updateNewMessage(text);
   }
 
   return (
