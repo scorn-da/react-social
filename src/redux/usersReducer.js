@@ -58,6 +58,7 @@ const initialState = {
   pageSize: 5,
   totalUsers: 20,
   currentPage: 1,
+  isLoading: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -97,43 +98,55 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         totalUsers: action.usersTotal,
       }
+    case actionTypes.SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      }
     default:
       return state;
   }
 };
 
-export const followCreator = (userId) => {
+export const follow = (userId) => {
   return {
     type: actionTypes.FOLLOW,
     userId,
   }
 };
 
-export const unfollowCreator = (userId) => {
+export const unfollow = (userId) => {
   return {
     type: actionTypes.UNFOLLOW,
     userId,
   }
 };
 
-export const setUsersCreator = (users) => {
+export const setUsers = (users) => {
   return {
     type: actionTypes.SET_USERS,
     users,
   }
 };
 
-export const setCurrentPageCreator = (currentPage) => {
+export const setCurrentPage = (currentPage) => {
   return {
     type: actionTypes.SET_CURRENT_PAGE,
     currentPage,
   }
 };
 
-export const setTotalUsersCreator = (usersTotal) => {
+export const setTotalUsers = (usersTotal) => {
   return {
     type: actionTypes.SET_USERS_TOTAL,
     usersTotal,
+  }
+};
+
+export const setIsLoading = (isLoading) => {
+  return {
+    type: actionTypes.SET_IS_LOADING,
+    isLoading
   }
 };
 
