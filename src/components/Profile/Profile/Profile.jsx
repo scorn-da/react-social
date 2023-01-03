@@ -3,7 +3,7 @@ import ProfileInfo from "src/components/Profile/ProfileInfo/ProfileInfo";
 import PostsCreator from "src/components/Profile/PostsCreator/PostsCreator";
 import Posts from "src/components/Profile/Posts/Posts";
 
-const Profile = ({ profilePage, addPost, updateNewPostText}) => {
+const Profile = ({ profilePage, addPost, updateNewPost }) => {
   const { newPostText, posts } = profilePage;
 
   return (
@@ -12,7 +12,7 @@ const Profile = ({ profilePage, addPost, updateNewPostText}) => {
       <PostsCreator
         newPostText={newPostText}
         addPost={addPost}
-        updateNewPostText={updateNewPostText}
+        updateNewPost={updateNewPost}
       />
       <Posts posts={posts} />
     </>

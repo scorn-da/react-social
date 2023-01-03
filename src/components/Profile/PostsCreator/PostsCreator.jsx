@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from 'src/components/Profile/PostsCreator/PostsCreator.module.css';
 
-const PostsCreator = ({ newPostText, updateNewPostText, addPost }) => {
+const PostsCreator = ({ newPostText, updateNewPost, addPost }) => {
   const newPostField = React.createRef();
 
   const onPostChange = () => {
     const text = newPostField.current.value;
-    updateNewPostText(text);
+    updateNewPost(text);
   }
 
   const onAddButtonClick = (evt) => {
