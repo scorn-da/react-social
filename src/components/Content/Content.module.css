@@ -1,4 +1,6 @@
 .content {
+  position: relative;
+
   grid-area: content;
   padding: 12px;
 }
