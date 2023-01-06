@@ -16,6 +16,7 @@ const initialState = {
     },
   ],
   newPostText: 'bla-bla',
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -33,6 +34,12 @@ const profileReducer = (state = initialState, action) => {
         newPostText: action.newPostText,
       };
     }
+    case actionTypes.SET_PROFILE_INFO: {
+      return {
+        ...state,
+        profile: action.profile,
+      };
+    }
     default:
       return state;
   }
@@ -48,6 +55,13 @@ export const updateNewPost = (text) => {
   return {
     type: actionTypes.UPDATE_NEW_POST_TEXT,
     newPostText: text,
+  }
+}
+
+export const setProfileInfo = (profile) => {
+  return {
+    type: actionTypes.SET_PROFILE_INFO,
+    profile,
   }
 }
 

@@ -4,11 +4,11 @@ import PostsCreator from "src/components/Profile/PostsCreator/PostsCreator";
 import Posts from "src/components/Profile/Posts/Posts";
 
 const Profile = ({ profilePage, addPost, updateNewPost }) => {
-  const { newPostText, posts } = profilePage;
+  const { newPostText, posts, profile } = profilePage;
 
   return (
     <>
-      <ProfileInfo bio="Hi! My name is. Hi! My name is. Hi! My name is." />
+      <ProfileInfo profile={profile} />
       <PostsCreator
         newPostText={newPostText}
         addPost={addPost}

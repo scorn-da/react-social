@@ -1,6 +1,7 @@
 import React from 'react';
 import User from "src/components/Users/User/User";
 import styles from 'src/components/Users/Users/Users.module.css';
+import { NavLink } from "react-router-dom";
 
 const Users = ({ props, onPageChanged }) => {
   const { totalUsers, pageSize, currentPage, usersPage, follow, unfollow } = props;
@@ -23,8 +24,14 @@ const Users = ({ props, onPageChanged }) => {
     {
       usersPage?.users &&
       <ul className={styles.users}>
-        {usersPage?.users.map(user => <User key={user.id} user={user} follow={follow}
-                                            unfollow={unfollow}/>)}
+        {usersPage?.users.map(user => {
+          return (
+            <NavLink to={'/profile/' + user.id } key={user.id}>
+              <User user={user} follow={follow}
+                    unfollow={unfollow}/>
+            </NavLink>
+          )
+        })}
       </ul>
     }
   </section>)

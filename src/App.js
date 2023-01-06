@@ -15,9 +15,9 @@ function App() {
       <Navbar/>
       <Content>
         <Routes>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route exact path="/dialogs" element={<Dialogs/>}/>
-          <Route exact path="/users" element={<Users/>}/>
+          <Route path="/profile/*" element={<Profile />} />
+          <Route exact path="/dialogs" element={<Dialogs />} />
+          <Route exact path="/users" element={<Users />} />
         </Routes>
       </Content>
       <Footer/>
