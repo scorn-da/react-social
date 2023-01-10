@@ -3,10 +3,12 @@ import Profile from "src/components/Profile/Profile/Profile";
 import { addPost, setProfileInfo, updateNewPost } from "src/redux/profileReducer";
 import React from "react";
 import axios from "axios";
+import { withRouter } from "src/utils/functions";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    axios(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+    let userId = this.props.router.params.userId;
+    axios(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
       this.props.setProfileInfo(response.data);
     });
   }
@@ -15,7 +17,9 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    profilePage: state.profilePage,
-  })
+  profilePage: state.profilePage,
+});
 
-export default connect(mapStateToProps, { addPost, updateNewPost, setProfileInfo })(ProfileContainer);
+const profileContainerWithUrlData = withRouter(ProfileContainer);
+
+export default connect(mapStateToProps, { addPost, updateNewPost, setProfileInfo })(profileContainerWithUrlData);

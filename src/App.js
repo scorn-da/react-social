@@ -15,7 +15,8 @@ function App() {
       <Navbar/>
       <Content>
         <Routes>
-          <Route path="/profile/*" element={<Profile />} />
+          <Route exact path="/profile/" element={<Profile />} />
+          <Route path="/profile/:userId" element={<Profile />} />
           <Route exact path="/dialogs" element={<Dialogs />} />
           <Route exact path="/users" element={<Users />} />
         </Routes>
