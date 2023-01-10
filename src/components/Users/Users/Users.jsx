@@ -1,10 +1,9 @@
 import React from 'react';
 import User from "src/components/Users/User/User";
 import styles from 'src/components/Users/Users/Users.module.css';
-import { NavLink } from "react-router-dom";
 
-const Users = ({ props, onPageChanged }) => {
-  const { totalUsers, pageSize, currentPage, usersPage, follow, unfollow } = props;
+export const Users = (props) => {
+  const { follow, unfollow, totalUsers, pageSize, usersPage, currentPage, onPageChanged } = props;
   const numberOfPages = Math.ceil(totalUsers / pageSize);
   const pages = [];
   for (let i = 1; i <= numberOfPages; i++) {
@@ -16,7 +15,7 @@ const Users = ({ props, onPageChanged }) => {
       {pages.map(page => {
         return (
           <button key={page} className={currentPage === page ? styles.selected : undefined} onClick={() => {
-            onPageChanged(page)
+            onPageChanged(page);
           }}>{page}</button>
         )
       })}
@@ -26,10 +25,8 @@ const Users = ({ props, onPageChanged }) => {
       <ul className={styles.users}>
         {usersPage?.users.map(user => {
           return (
-            <NavLink to={'/profile/' + user.id } key={user.id}>
-              <User user={user} follow={follow}
-                    unfollow={unfollow}/>
-            </NavLink>
+            <User user={user} follow={follow}
+                  unfollow={unfollow} key={user.id}/>
           )
         })}
       </ul>

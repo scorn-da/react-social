@@ -146,7 +146,7 @@ export const setTotalUsers = (usersTotal) => {
 export const setIsLoading = (isLoading) => {
   return {
     type: actionTypes.SET_IS_LOADING,
-    isLoading
+    isLoading,
   }
 };
 

@@ -1,6 +1,4 @@
-import React from "react";
-import axios from "axios";
-import { connect } from "react-redux";
+import Users from "src/components/Users/Users/Users";
 import {
   follow,
   setCurrentPage,
@@ -9,7 +7,9 @@ import {
   setUsers,
   unfollow,
 } from "src/redux/usersReducer";
-import Users from "src/components/Users/Users/Users";
+import { connect } from "react-redux";
+import axios from "axios";
+import React from "react";
 import Loader from "src/components/Loader/Loader";
 
 class UsersContainer extends React.Component {
@@ -35,7 +35,7 @@ class UsersContainer extends React.Component {
     return (
       <>
         {this.props.isLoading ? <Loader /> : null}
-        <Users props={this.props} onPageChanged={this.onPageChanged} />
+        <Users {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
       </>);
   }
 }
@@ -49,11 +49,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsers,
-  setIsLoading,
-})(UsersContainer);
+export default connect(mapStateToProps, {  follow, unfollow, setUsers, setTotalUsers, setCurrentPage, setIsLoading, })(UsersContainer);
