@@ -3,7 +3,7 @@ import { actionTypes } from "src/utils/consts";
 const updateFollowingStatus = (user, followingValue) => {
   return {
     ...user,
-    following: followingValue,
+    followed: followingValue,
   }
 }
 
