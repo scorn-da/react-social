@@ -8,29 +8,27 @@ import {
   unfollow,
 } from "src/redux/usersReducer";
 import { connect } from "react-redux";
-import axios from "axios";
 import React from "react";
 import Loader from "src/components/Loader/Loader";
+import { usersAPI } from "src/api/api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.setIsLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-      withCredentials: true,
-    }).then(response => {
+
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
       this.props.setIsLoading(false);
-      this.props.setUsers(response.data.items);
-      this.props.setTotalUsers(response.data.totalCount);
+      this.props.setUsers(data.items);
+      this.props.setTotalUsers(data.totalCount);
     });
   }
 
   onPageChanged(pageNumber) {
     this.props.setIsLoading(true);
     this.props.setCurrentPage(pageNumber);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-      withCredentials: true,
-    }).then(response => {
-      this.props.setUsers(response.data.items);
+
+    usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+      this.props.setUsers(data.items);
       this.props.setIsLoading(false);
     });
   }
