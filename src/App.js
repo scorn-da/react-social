@@ -1,5 +1,4 @@
 import './App.css';
-import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
@@ -7,11 +6,12 @@ import Content from "src/components/Content/Content";
 import Dialogs from "src/pages/dialogs/Dialogs";
 import Profile from "src/pages/profile/Profile";
 import Users from "src/pages/users/Users";
+import HeaderContainer from "src/components/Header/HeaderContainer";
 
 function App() {
   return (
     <div className="appWrapper">
-      <Header/>
+      <HeaderContainer />
       <Navbar/>
       <Content>
         <Routes>
