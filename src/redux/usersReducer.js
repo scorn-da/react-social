@@ -59,6 +59,7 @@ const initialState = {
   totalUsers: 20,
   currentPage: 1,
   isLoading: false,
+  followingInProgress: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -102,6 +103,13 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.isLoading,
+      }
+    case actionTypes.TOGGLE_FOLLOWING_IN_PROGRESS:
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userId]
+          : state.followingInProgress.filter(id => id !== action.userId)
       }
     default:
       return state;
@@ -147,6 +155,14 @@ export const setIsLoading = (isLoading) => {
   return {
     type: actionTypes.SET_IS_LOADING,
     isLoading,
+  }
+};
+
+export const toggleFollowingProgress = (isFetching, userId) => {
+  return {
+    type: actionTypes.TOGGLE_FOLLOWING_IN_PROGRESS,
+    isFetching,
+    userId,
   }
 };
 

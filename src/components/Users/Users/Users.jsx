@@ -3,7 +3,7 @@ import User from "src/components/Users/User/User";
 import styles from 'src/components/Users/Users/Users.module.css';
 
 export const Users = (props) => {
-  const { follow, unfollow, totalUsers, pageSize, usersPage, currentPage, onPageChanged } = props;
+  const { follow, unfollow, totalUsers, pageSize, usersPage, currentPage, onPageChanged, followingInProgress, toggleFollowingProgress } = props;
   const numberOfPages = Math.ceil(totalUsers / pageSize);
   const pages = [];
   for (let i = 1; i <= numberOfPages; i++) {
@@ -26,7 +26,7 @@ export const Users = (props) => {
         {usersPage?.users.map(user => {
           return (
             <User user={user} follow={follow}
-                  unfollow={unfollow} key={user.id}/>
+                  unfollow={unfollow} key={user.id} followingInProgress={followingInProgress} toggleFollowingProgress={toggleFollowingProgress} />
           )
         })}
       </ul>

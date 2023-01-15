@@ -4,7 +4,8 @@ import userIcon from 'src/assets/images/user_icon.svg';
 import { NavLink } from "react-router-dom";
 import { usersAPI } from "src/api/api";
 
-const User = ({ user, follow, unfollow }) => {
+const User = (props) => {
+  const { user, follow, unfollow, followingInProgress, toggleFollowingProgress } = props;
   return (
     <li className={styles.user}>
       <p>
@@ -20,18 +21,21 @@ const User = ({ user, follow, unfollow }) => {
           <i>{user.onlineStatus}</i>
           <i>{user.following}</i>*/}
           {
-            user.followed ?
-              <button onClick={() => {
+            user.followed?
+              <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
+                toggleFollowingProgress(true, user.id);
                 usersAPI.unfollowUser(user.id).then((data) => {
                     if (data.resultCode === 0) {
-                      unfollow(user.id)
+                      toggleFollowingProgress(false, user.id);
+                      unfollow(user.id);
                     }
-                })
-                unfollow(user.id);
+                });
               }}>Unfollow</button> :
-              <button onClick={() => {
+              <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
+                toggleFollowingProgress(true, user.id);
                 usersAPI.followUser(user.id).then((data) => {
                   if (data.resultCode === 0) {
+                    toggleFollowingProgress(false, user.id);
                     follow(user.id);
                   }
                 })
