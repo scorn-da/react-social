@@ -3,9 +3,14 @@ import Dialog from "src/components/Dialogs/Dialog/Dialog";
 import Message from "src/components/Dialogs/Message/Message";
 import MessagesCreator from "src/components/Dialogs/MessagesCreator/MessagesCreator";
 import React from "react";
+import { Navigate } from "react-router-dom";
 
-const Dialogs = ({ dialogsPage, sendMessage, updateNewMessage }) => {
+const Dialogs = ({ dialogsPage, sendMessage, updateNewMessage, isAuthed }) => {
   const { dialogs, messages, newMessageText } = dialogsPage;
+
+  if (!isAuthed) {
+    return <Navigate to={'/login'} />
+  }
 
   return (
     <section className={styles.dialogsWrapper}>

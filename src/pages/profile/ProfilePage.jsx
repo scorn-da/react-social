@@ -1,9 +1,9 @@
 import ProfileContainer from "src/components/Profile/ProfileContainer";
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <ProfileContainer />
   );
 };
 
-export default Profile;
+export default ProfilePage;

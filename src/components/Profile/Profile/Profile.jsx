@@ -2,6 +2,7 @@ import React from "react";
 import ProfileInfo from "src/components/Profile/ProfileInfo/ProfileInfo";
 import PostsCreator from "src/components/Profile/PostsCreator/PostsCreator";
 import Posts from "src/components/Profile/Posts/Posts";
+import { Redirect } from "react-router-dom";
 
 const Profile = (props) => {
   const { newPostText, posts, profile } = props.profilePage;

@@ -5,6 +5,7 @@ import { sendMessage, updateNewMessage } from "src/redux/dialogsReducer";
 const mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsPage,
+    isAuthed: state.auth.isAuthed,
   };
 }
 

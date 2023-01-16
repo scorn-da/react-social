@@ -1,10 +1,10 @@
 import React from 'react';
 import UsersContainer from "src/components/Users/UsersContainer";
 
-const Users = () => {
+const UsersPage = () => {
   return (
     <UsersContainer />
   );
 };
 
-export default Users;
+export default UsersPage;
