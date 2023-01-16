@@ -2,7 +2,6 @@ import React from 'react';
 import styles from 'src/components/Users/User/User.module.css';
 import userIcon from 'src/assets/images/user_icon.svg';
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "src/api/api";
 
 const User = (props) => {
   const { user, follow, unfollow, followingInProgress } = props;
