@@ -1,4 +1,5 @@
 import { actionTypes } from "src/utils/consts";
+import { usersAPI } from "src/api/api";
 
 const initialState = {
   posts: [
@@ -64,5 +65,12 @@ export const setProfileInfo = (profile) => {
     profile,
   }
 }
+
+export const getUserInfo = (userId) => (dispatch) => {
+  usersAPI.getUserProfile(userId).then(data => {
+    dispatch(setProfileInfo(data));
+  });
+}
+
 
 export default profileReducer;
