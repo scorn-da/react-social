@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { usersAPI } from "src/api/api";
 
 const User = (props) => {
-  const { user, follow, unfollow, followingInProgress, toggleFollowingProgress } = props;
+  const { user, follow, unfollow, followingInProgress } = props;
   return (
     <li className={styles.user}>
       <p>
@@ -23,22 +23,10 @@ const User = (props) => {
           {
             user.followed?
               <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
-                toggleFollowingProgress(true, user.id);
-                usersAPI.unfollowUser(user.id).then((data) => {
-                    if (data.resultCode === 0) {
-                      toggleFollowingProgress(false, user.id);
-                      unfollow(user.id);
-                    }
-                });
+                unfollow(user.id);
               }}>Unfollow</button> :
               <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
-                toggleFollowingProgress(true, user.id);
-                usersAPI.followUser(user.id).then((data) => {
-                  if (data.resultCode === 0) {
-                    toggleFollowingProgress(false, user.id);
-                    follow(user.id);
-                  }
-                })
+                follow(user.id);
               }}>Follow</button>
           }
         </span>
