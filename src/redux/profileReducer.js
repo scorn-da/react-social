@@ -1,5 +1,5 @@
 import { actionTypes } from "src/utils/consts";
-import { usersAPI } from "src/api/api";
+import { profileAPI } from "src/api/api";
 
 const initialState = {
   posts: [
@@ -18,6 +18,7 @@ const initialState = {
   ],
   newPostText: 'bla-bla',
   profile: null,
+  status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -39,6 +40,12 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.profile,
+      };
+    }
+    case actionTypes.SET_STATUS: {
+      return {
+        ...state,
+        status: action.status,
       };
     }
     default:
@@ -66,11 +73,32 @@ export const setProfileInfo = (profile) => {
   }
 }
 
+export const setStatus = (status) => {
+  return {
+    type: actionTypes.SET_STATUS,
+    status,
+  }
+}
+
 export const getUserInfo = (userId) => (dispatch) => {
-  usersAPI.getUserProfile(userId).then(data => {
+  profileAPI.getUserProfile(userId).then(data => {
     dispatch(setProfileInfo(data));
   });
 }
 
+export const getUserStatus = (userId) => (dispatch) => {
+  profileAPI.getStatus(userId).then(data => {
+    dispatch(setStatus(data));
+  });
+}
+
+export const updateStatus = (status) => (dispatch) => {
+  profileAPI.updateStatus(getUserStatus)
+    .then(data => {
+      if (data.statusCode === 0) {
+        dispatch(setStatus(status));
+      }
+    });
+}
 
 export default profileReducer;

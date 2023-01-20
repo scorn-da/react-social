@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from 'src/components/Profile/ProfileInfo/ProfileInfo.module.css';
 import Loader from "src/components/Loader/Loader";
+import Status from "src/components/Profile/Status/Status";
 
-const ProfileInfo = ({ profile }) => {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
   if (!profile) {
     return <Loader />
   }
@@ -18,6 +19,7 @@ const ProfileInfo = ({ profile }) => {
             {profile.aboutMe}
           </div>
         }
+        <Status status={status} updateStatus={updateStatus} />
       </div>
   );
 };

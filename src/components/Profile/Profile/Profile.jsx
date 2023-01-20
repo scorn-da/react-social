@@ -4,16 +4,20 @@ import PostsCreator from "src/components/Profile/PostsCreator/PostsCreator";
 import Posts from "src/components/Profile/Posts/Posts";
 import { Redirect } from "react-router-dom";
 
-const Profile = (props) => {
-  const { newPostText, posts, profile } = props.profilePage;
+const Profile = ({ profilePage, addPost, updateNewPost, status, updateStatus }) => {
+  const { newPostText, posts, profile } = profilePage;
 
   return (
     <>
-      <ProfileInfo profile={profile} />
+      <ProfileInfo
+        profile={profile}
+        status={status}
+        updateStatus={updateStatus}
+      />
       <PostsCreator
         newPostText={newPostText}
-        addPost={props.addPost}
-        updateNewPost={props.updateNewPost}
+        addPost={addPost}
+        updateNewPost={updateNewPost}
       />
       <Posts posts={posts} />
     </>
