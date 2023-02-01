@@ -1,11 +1,14 @@
 import React from "react";
 import ProfileInfo from "src/components/Profile/ProfileInfo/ProfileInfo";
-import PostsCreator from "src/components/Profile/PostsCreator/PostsCreator";
 import Posts from "src/components/Profile/Posts/Posts";
-import { Redirect } from "react-router-dom";
+import PostsCreatorForm from "src/components/Profile/PostsCreator/PostsCreator";
 
-const Profile = ({ profilePage, addPost, updateNewPost, status, updateStatus }) => {
-  const { newPostText, posts, profile } = profilePage;
+const Profile = ({ profilePage, addPost, status, updateStatus }) => {
+  const { posts, profile } = profilePage;
+
+  const addNewPost = (values) => {
+    addPost(values.postText);
+  }
 
   return (
     <>
@@ -14,10 +17,8 @@ const Profile = ({ profilePage, addPost, updateNewPost, status, updateStatus }) 
         status={status}
         updateStatus={updateStatus}
       />
-      <PostsCreator
-        newPostText={newPostText}
-        addPost={addPost}
-        updateNewPost={updateNewPost}
+      <PostsCreatorForm
+        onSubmit={addNewPost}
       />
       <Posts posts={posts} />
     </>

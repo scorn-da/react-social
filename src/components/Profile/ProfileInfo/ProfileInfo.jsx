@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from 'src/components/Profile/ProfileInfo/ProfileInfo.module.css';
-import Loader from "src/components/Loader/Loader";
+import Loader from "src/components/common/Loader/Loader";
 import Status from "src/components/Profile/Status/Status";
 
 const ProfileInfo = ({ profile, status, updateStatus }) => {

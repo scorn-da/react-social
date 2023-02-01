@@ -16,7 +16,6 @@ const initialState = {
       text: 'That\'s interesting',
     },
   ],
-  newPostText: 'bla-bla',
   profile: null,
   status: '',
 };
@@ -26,15 +25,8 @@ const profileReducer = (state = initialState, action) => {
     case actionTypes.ADD_POST: {
       return {
         ...state,
-        newPostText: '',
-        posts: [...state.posts, { id: 6, text: state.newPostText, }],
+        posts: [...state.posts, { id: 6, text: action.newPostText, }],
       }
-    }
-    case actionTypes.UPDATE_NEW_POST_TEXT: {
-      return {
-        ...state,
-        newPostText: action.newPostText,
-      };
     }
     case actionTypes.SET_PROFILE_INFO: {
       return {
@@ -53,16 +45,10 @@ const profileReducer = (state = initialState, action) => {
   }
 }
 
-export const addPost = () => {
+export const addPost = (postText) => {
   return {
     type: actionTypes.ADD_POST,
-  }
-}
-
-export const updateNewPost = (text) => {
-  return {
-    type: actionTypes.UPDATE_NEW_POST_TEXT,
-    newPostText: text,
+    newPostText: postText,
   }
 }
 

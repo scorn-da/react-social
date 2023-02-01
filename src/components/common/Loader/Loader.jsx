@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from "classnames";
-import styles from 'src/components/Loader/Loader.module.css';
+import styles from 'src/components/common/Loader/Loader.module.css';
 
 const Loader = () => {
   return (

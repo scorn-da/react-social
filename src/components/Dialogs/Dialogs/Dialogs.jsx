@@ -1,11 +1,15 @@
 import styles from "src/components/Dialogs/Dialogs.module.css";
 import Dialog from "src/components/Dialogs/Dialog/Dialog";
 import Message from "src/components/Dialogs/Message/Message";
-import MessagesCreator from "src/components/Dialogs/MessagesCreator/MessagesCreator";
 import React from "react";
+import MessageCreatorForm from "src/components/Dialogs/MessagesCreator/MessagesCreator";
 
-const Dialogs = ({ dialogsPage, sendMessage, updateNewMessage }) => {
-  const { dialogs, messages, newMessageText } = dialogsPage;
+const Dialogs = ({ dialogsPage, sendMessage }) => {
+  const { dialogs, messages } = dialogsPage;
+
+  const addNewMessage = (values) => {
+    sendMessage(values.message);
+  }
 
   return (
     <section className={styles.dialogsWrapper}>
@@ -15,8 +19,7 @@ const Dialogs = ({ dialogsPage, sendMessage, updateNewMessage }) => {
       <ul className={styles.messages}>
         {messages.map(message => <Message text={message.text} key={message.id}/>)}
       </ul>
-      <MessagesCreator className={styles.messagesCreator} newMessageText={newMessageText} sendMessage={sendMessage}
-                       updateNewMessage={updateNewMessage}/>
+      <MessageCreatorForm className={styles.messagesCreator} onSubmit={addNewMessage} />
     </section>
   )
 }

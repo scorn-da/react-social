@@ -1,0 +1,12 @@
+.control {
+
+}
+
+.control.error input,
+.control.error textarea {
+  border: 1px solid darkred;
+}
+
+.control.error p {
+  color: darkred;
+}

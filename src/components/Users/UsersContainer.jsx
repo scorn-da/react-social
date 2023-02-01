@@ -8,7 +8,7 @@ import {
 } from "src/redux/usersReducer";
 import { connect } from "react-redux";
 import React from "react";
-import Loader from "src/components/Loader/Loader";
+import Loader from "src/components/common/Loader/Loader";
 import { withAuthRedirect } from "src/hoc/withAuthRedirect";
 import { compose } from "redux";
 
