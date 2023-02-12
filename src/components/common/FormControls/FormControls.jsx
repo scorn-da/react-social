@@ -8,7 +8,7 @@ export const Element = ({ input, meta, ...props }) => {
   return (
     <div className={classNames(styles.control, {[styles.error]: hasError})}>
       <p>
-        <props.elementType {...input} {...props} />
+        <props.element {...input} {...props} />
       </p>
       {hasError && <p>{meta.error}</p>}
     </div>

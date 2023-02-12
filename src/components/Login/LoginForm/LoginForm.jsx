@@ -7,22 +7,22 @@ const LoginForm = (props) => {
   const { handleSubmit } = props;
 
   return (
-    <form onSubmit={handleSubmit }>
-      <p>
-        <Field component={Element} elementType="input" type="text" placeholder="Login" name="login" validate={[required]} />
-      </p>
-      <p>
-        <Field component={Element} elementType="input" type="password" placeholder="Password" name="password" validate={[required]} />
-      </p>
-      <p>
+    <form onSubmit={ handleSubmit }>
+      <div>
+        <Field component={Element} element="input" type="text" placeholder="Email" name="email" validate={[required]} />
+      </div>
+      <div>
+        <Field component={Element} element="input" type="password" placeholder="Password" name="password" validate={[required]} />
+      </div>
+      <div>
         <Field type="checkbox" component="input" name="rememberMe" />
         <span>remember me</span>
-      </p>
-      <p>
+      </div>
+      <div>
         <button>
           Login
         </button>
-      </p>
+      </div>
     </form>
   );
 };

@@ -12,7 +12,7 @@ const MessagesCreator = (props) => {
 
   return (
     <form className={classNames(styles.creator, className)} onSubmit={handleSubmit}>
-      <Field component={Element} elementType="textarea" name="message" placeholder="Enter a message text" validate={[required, maxLength500]} />
+      <Field component={Element} element="textarea" name="message" placeholder="Enter a message text" validate={[required, maxLength500]} />
       <div className={styles.buttonsWrapper}>
         <button>Send</button>
       </div>

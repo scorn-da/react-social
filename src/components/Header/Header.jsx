@@ -12,7 +12,7 @@ const Header = (props) => {
 
       <div className={styles.loginWrapper}>
         {
-          props.isAuthed ? <div>{props.login}</div>: <NavLink to={'/login'}>Login</NavLink>
+          props.isAuthed ? <div>{props.login} <button onClick={props.logout}>Logout</button></div>: <NavLink to={'/login'}>Login</NavLink>
         }
       </div>
     </header>
