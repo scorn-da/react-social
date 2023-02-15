@@ -14,7 +14,7 @@ const LoginForm = (props) => {
       </div>
       <div>
         <Field component={Element} element="input" type="password" placeholder="Password" name="password"
-               validate={[required]}/>
+              validate={[required]}/>
       </div>
       {props.error &&
       <div className={styles.formError}>
