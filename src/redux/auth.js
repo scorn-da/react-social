@@ -45,10 +45,9 @@ export const getAuthedData = () => (dispatch) => {
 
 export const login = (email, password, rememberMe) => (dispatch) => {
   authAPI.login(email, password, rememberMe).then(data => {
-    if(data.resultCode === 0) {
+    if(data.data.resultCode === 0) {
       dispatch(getAuthedData(email, password, rememberMe, true));
     } else {
-      console.log(data.data.messages);
       let message = data.data.messages.length > 0 ? data.data.messages[0] : 'Some error';
       dispatch(stopSubmit('login', {_error: message}));
     }
