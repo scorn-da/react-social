@@ -21,9 +21,9 @@ export const Users = (props) => {
       })}
     </ul>
     {
-      usersPage?.users &&
+      usersPage &&
       <ul className={styles.users}>
-        {usersPage?.users.map(user => {
+        {usersPage.map(user => {
           return (
             <User user={user} follow={follow}
                   unfollow={unfollow} key={user.id} followingInProgress={followingInProgress} toggleFollowingProgress={toggleFollowingProgress} />

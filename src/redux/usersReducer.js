@@ -132,6 +132,7 @@ export const unfollowSucced = (userId) => {
 };
 
 export const setUsers = (users) => {
+
   return {
     type: actionTypes.SET_USERS,
     users,
@@ -167,11 +168,12 @@ export const toggleFollowingProgress = (isFetching, userId) => {
   }
 };
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
   return (dispatch) => {
     dispatch(setIsLoading(true));
+    dispatch(setCurrentPage(page));
 
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
+    usersAPI.getUsers(page, pageSize).then(data => {
       dispatch(setIsLoading(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsers(data.totalCount));
