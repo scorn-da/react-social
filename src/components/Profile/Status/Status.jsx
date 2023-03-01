@@ -1,54 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-class Status extends React.Component {
-  statusInputRef =  React.createRef();
+export const Status = (props) => {
+  const [ editMode, setEditMode ] = useState(false);
+  const [ status, setStatus ] = useState(props.status);
 
-  state = {
-    editMode: false,
-    status: this.props.status,
-  }
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]);
 
-  activateEditMode = () => {
-    this.setState( {
-      editMode: true
-    })
-  }
+  const activateEditMode = () => {
+      setEditMode(true);
+  };
 
-  deactivateEditMode = () => {
-    this.setState( {
-      editMode: false
-    })
-    this.props.updateStatus(this.state.status);
-  }
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    props.updateStatus(status);
+  };
 
-  onStatusChange = (evt) => {
-    this.setState({
-      status: evt.currentTarget.value,
-    });
-  }
+  const onStatusChange = (evt) => {
+    setStatus(evt.currentTarget.value);
+  };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.status !== this.props.status) {
-      this.setState({
-        status: this.props.status,
-      })
-    }
-  }
-
-  render() {
-    return(
-      <>
-        { !this.state.editMode ?
-          <div onClick={this.activateEditMode}>
-            <span>{this.props.status ?? '–'}</span>
-          </div> :
-          <div>
-            <input onChange={this.onStatusChange} autoFocus={true} type="text" value={this.state.status} onBlur={this.deactivateEditMode} />
-          </div>
-        }
-      </>
-    );
-  }
+  return(
+    <>
+      { !editMode ?
+        <div onClick={activateEditMode}>
+          <span>{props.status ?? '–'}</span>
+        </div> :
+        <div>
+          <input onChange={onStatusChange} autoFocus={true} type="text" value={status} onBlur={deactivateEditMode} />
+        </div>
+      }
+    </>
+  );
 }
 
 export default Status;
