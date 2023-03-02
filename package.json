@@ -43,6 +43,11 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-leaflet|@react-leaflet|d3-*|axios))"
+    ]
+  },
   "devDependencies": {
     "editorconfig-checker": "^4.0.2",
     "react-router-dom": "^6.4.1"

@@ -28,6 +28,12 @@ const profileReducer = (state = initialState, action) => {
         posts: [...state.posts, { id: 6, text: action.newPostText, }],
       }
     }
+    case actionTypes.DELETE_POST: {
+      return {
+        ...state,
+        posts: state.posts.filter(post => post.id !== action.postId),
+      }
+    }
     case actionTypes.SET_PROFILE_INFO: {
       return {
         ...state,
@@ -63,6 +69,13 @@ export const setStatus = (status) => {
   return {
     type: actionTypes.SET_STATUS,
     status,
+  }
+}
+
+export const deletePost = (postId) => {
+  return {
+    type: actionTypes.DELETE_POST,
+    postId
   }
 }
 
