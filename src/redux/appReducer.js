@@ -1,5 +1,6 @@
-import { actionTypes } from "src/utils/consts";
 import { getAuthedData } from "src/redux/auth";
+
+const INITIALIZED_SUCCESSFULLY = 'react-social/appReducer/INITIALIZED_SUCCESSFULLY';
 
 const initialState = {
   initialized: false
@@ -7,7 +8,7 @@ const initialState = {
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.INITIALIZED_SUCCESSFULLY:
+    case INITIALIZED_SUCCESSFULLY:
       return {
         ...state,
         initialized: true,
@@ -17,7 +18,7 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-export const initializedSuccessfully = () => ({ type: actionTypes.INITIALIZED_SUCCESSFULLY });
+export const initializedSuccessfully = () => ({ type: INITIALIZED_SUCCESSFULLY });
 
 export const initialize = () => (dispatch) => {
   const promise = dispatch(getAuthedData());
