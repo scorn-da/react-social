@@ -16,9 +16,6 @@ const User = (props) => {
             <NavLink to={'/profile/' + user.id}>{user.name}</NavLink>
             {`${user.age ? ', ' + user.age : ''}`}
           </b>
-          {/*<i>{`${user.location.country}, ${user.location.city}`}</i>
-          <i>{user.onlineStatus}</i>
-          <i>{user.following}</i>*/}
           {
             user.followed?
               <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {

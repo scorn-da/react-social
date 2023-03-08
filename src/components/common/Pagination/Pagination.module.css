@@ -1,0 +1,10 @@
+.button {
+  padding: 4px 8px;
+
+  border: none;
+  cursor: pointer;
+}
+
+.button.selected {
+  font-weight: 700;
+}

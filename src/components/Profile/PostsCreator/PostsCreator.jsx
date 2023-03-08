@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from 'src/components/Profile/PostsCreator/PostsCreator.module.css';
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { required } from "src/utils/validators";
-import { Element } from "src/components/common/FormControls/FormControls";
+import { createFormElement} from "src/components/common/FormControls/FormControls";
 
 const PostsCreator = ({ handleSubmit }) => {
   return (
     <form className={styles.creator} onSubmit={handleSubmit}>
-      <Field component={Element} element="textarea" name="postText" placeholder="Enter a post text" validate={[required]} />
+      {createFormElement('textarea', 'Enter a post text', [required], {name: 'postText'})}
       <div className={styles.buttonsWrapper}>
         <button>Add a post</button>
         <button>Clear</button>

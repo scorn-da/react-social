@@ -28,7 +28,7 @@ export const Status = (props) => {
           <span>{props.status ?? '–'}</span>
         </div> :
         <div>
-          <input onChange={onStatusChange} autoFocus={true} type="text" value={status} onBlur={deactivateEditMode} />
+          <input onChange={onStatusChange} autoFocus={true} type="text" value={status ?? ''} onBlur={deactivateEditMode} />
         </div>
       }
     </>
