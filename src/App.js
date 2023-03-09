@@ -1,18 +1,19 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Content from "src/components/Content/Content";
 import HeaderContainer from "src/components/Header/HeaderContainer";
 import ProfilePage from "src/pages/profile/ProfilePage";
 import DialogsPage from "src/pages/dialogs/DialogsPage";
 import UsersPage from "src/pages/users/UsersPage";
 import LoginPage from "src/pages/login/LoginPage";
-import { Component } from "react";
+import React, { Component } from "react";
 import { compose } from "redux";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { initializedSuccessfully } from "src/redux/appReducer";
 import Loader from "src/components/common/Loader/Loader";
+import store from "src/redux/reduxStore";
 
 class App extends Component {
   componentDidMount() {
@@ -47,4 +48,16 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 });
 
-export default compose(connect(mapStateToProps, { initializedSuccessfully })(App));
+const AppContainer = compose(connect(mapStateToProps, { initializedSuccessfully })(App));
+
+const MainApp = (props) => {
+  return (
+    <Router>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </Router>
+  )
+}
+
+export default MainApp;
