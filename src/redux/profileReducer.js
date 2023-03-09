@@ -1,5 +1,9 @@
-import { actionTypes } from "src/utils/consts";
 import { profileAPI } from "src/api/api";
+
+const ADD_POST = 'react-social/profileReducer/ADD_POST';
+const DELETE_POST = 'react-social/profileReducer/DELETE_POST';
+const SET_PROFILE_INFO = 'react-social/profileReducer/SET_PROFILE_INFO';
+const SET_STATUS = 'react-social/profileReducer/SET_STATUS';
 
 const initialState = {
   posts: [
@@ -22,25 +26,25 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_POST: {
+    case ADD_POST: {
       return {
         ...state,
         posts: [...state.posts, { id: 6, text: action.newPostText, }],
       }
     }
-    case actionTypes.DELETE_POST: {
+    case DELETE_POST: {
       return {
         ...state,
         posts: state.posts.filter(post => post.id !== action.postId),
       }
     }
-    case actionTypes.SET_PROFILE_INFO: {
+    case SET_PROFILE_INFO: {
       return {
         ...state,
         profile: action.profile,
       };
     }
-    case actionTypes.SET_STATUS: {
+    case SET_STATUS: {
       return {
         ...state,
         status: action.status,
@@ -53,28 +57,28 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPost = (postText) => {
   return {
-    type: actionTypes.ADD_POST,
+    type: ADD_POST,
     newPostText: postText,
   }
 }
 
 export const setProfileInfo = (profile) => {
   return {
-    type: actionTypes.SET_PROFILE_INFO,
+    type: SET_PROFILE_INFO,
     profile,
   }
 }
 
 export const setStatus = (status) => {
   return {
-    type: actionTypes.SET_STATUS,
+    type: SET_STATUS,
     status,
   }
 }
 
 export const deletePost = (postId) => {
   return {
-    type: actionTypes.DELETE_POST,
+    type: DELETE_POST,
     postId
   }
 }

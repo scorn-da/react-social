@@ -1,4 +1,4 @@
-import { actionTypes } from "src/utils/consts";
+const SEND_MESSAGE = 'react-social/dialogsReducer/SEND_MESSAGE';
 
 const initialState = {
   dialogs: [
@@ -15,7 +15,7 @@ const initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SEND_MESSAGE:
+    case SEND_MESSAGE:
       const text = action.newMessageText;
       return  {
         ...state,
@@ -28,7 +28,7 @@ const dialogsReducer = (state = initialState, action) => {
 
 export const sendMessage = (text) => {
   return {
-    type: actionTypes.SEND_MESSAGE,
+    type: SEND_MESSAGE,
     newMessageText: text,
   }
 }

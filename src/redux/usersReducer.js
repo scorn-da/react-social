@@ -1,6 +1,13 @@
-import { actionTypes } from "src/utils/consts";
 import { usersAPI } from "src/api/api";
 import { updateObjectInArray } from "src/utils/functions";
+
+const FOLLOW = 'react-social/usersReducer/FOLLOW';
+const UNFOLLOW = 'react-social/usersReducer/UNFOLLOW';
+const SET_USERS = 'react-social/usersReducer/SET_USERS';
+const SET_CURRENT_PAGE = 'react-social/usersReducer/SET_CURRENT_PAGE';
+const SET_USERS_TOTAL = 'react-social/usersReducer/SET_USERS_TOTAL';
+const SET_IS_LOADING = 'react-social/usersReducer/SET_IS_LOADING';
+const TOGGLE_FOLLOWING_IN_PROGRESS = 'react-social/usersReducer/TOGGLE_FOLLOWING_IN_PROGRESS';
 
 const initialState = {
   users: [
@@ -59,37 +66,37 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FOLLOW:
+    case FOLLOW:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userId, 'id', { followed: true }),
       }
-    case actionTypes.UNFOLLOW:
+    case UNFOLLOW:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userId, 'id', { followed: false }),
       }
-    case actionTypes.SET_USERS:
+    case SET_USERS:
       return {
         ...state,
         users: [...action.users],
       }
-    case actionTypes.SET_CURRENT_PAGE:
+    case SET_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.currentPage,
       }
-    case actionTypes.SET_USERS_TOTAL:
+    case SET_USERS_TOTAL:
       return {
         ...state,
         totalUsers: action.usersTotal,
       }
-    case actionTypes.SET_IS_LOADING:
+    case SET_IS_LOADING:
       return {
         ...state,
         isLoading: action.isLoading,
       }
-    case actionTypes.TOGGLE_FOLLOWING_IN_PROGRESS:
+    case TOGGLE_FOLLOWING_IN_PROGRESS:
       return {
         ...state,
         followingInProgress: action.isFetching
@@ -103,14 +110,14 @@ const usersReducer = (state = initialState, action) => {
 
 export const followSucced = (userId) => {
   return {
-    type: actionTypes.FOLLOW,
+    type: FOLLOW,
     userId,
   }
 };
 
 export const unfollowSucced = (userId) => {
   return {
-    type: actionTypes.UNFOLLOW,
+    type: UNFOLLOW,
     userId,
   }
 };
@@ -118,35 +125,35 @@ export const unfollowSucced = (userId) => {
 export const setUsers = (users) => {
 
   return {
-    type: actionTypes.SET_USERS,
+    type: SET_USERS,
     users,
   }
 };
 
 export const setCurrentPage = (currentPage) => {
   return {
-    type: actionTypes.SET_CURRENT_PAGE,
+    type: SET_CURRENT_PAGE,
     currentPage,
   }
 };
 
 export const setTotalUsers = (usersTotal) => {
   return {
-    type: actionTypes.SET_USERS_TOTAL,
+    type: SET_USERS_TOTAL,
     usersTotal,
   }
 };
 
 export const setIsLoading = (isLoading) => {
   return {
-    type: actionTypes.SET_IS_LOADING,
+    type: SET_IS_LOADING,
     isLoading,
   }
 };
 
 export const toggleFollowingProgress = (isFetching, userId) => {
   return {
-    type: actionTypes.TOGGLE_FOLLOWING_IN_PROGRESS,
+    type: TOGGLE_FOLLOWING_IN_PROGRESS,
     isFetching,
     userId,
   }
