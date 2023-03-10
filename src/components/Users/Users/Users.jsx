@@ -7,7 +7,7 @@ export const Users = (props) => {
   const { follow, unfollow, totalUsers, pageSize, usersPage, currentPage, onPageChanged, followingInProgress, toggleFollowingProgress } = props;
 
   return (<section>
-    <Pagination totalUsers={totalUsers} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged} />
+    <Pagination totalItems={totalUsers} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged} />
     {
       usersPage &&
       <ul className={styles.users}>

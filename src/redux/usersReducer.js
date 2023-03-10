@@ -57,8 +57,8 @@ const initialState = {
       onlineStatus: 'online',
     },*/
   ],
-  pageSize: 5,
-  totalUsers: 20,
+  pageSize: 10,
+  totalUsers: 0,
   currentPage: 1,
   isLoading: false,
   followingInProgress: [],
