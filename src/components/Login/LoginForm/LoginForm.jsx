@@ -4,7 +4,7 @@ import { createFormElement} from "src/components/common/FormControls/FormControl
 import { required } from "src/utils/validators";
 import styles from 'src/components/Login/LoginForm/LoginForm.module.css';
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 
   return (
     <form onSubmit={handleSubmit}>
@@ -19,6 +19,11 @@ const LoginForm = ({ handleSubmit, error }) => {
         {createFormElement('input', '', [required], {type: 'checkbox', name: 'rememberMe'})}
         <span>remember me</span>
       </div>
+      {captchaUrl &&
+      <div>
+        <img src={captchaUrl} alt="Captcha for logging in" />
+        {createFormElement('input', 'Symbols from the image', [required], {type: 'text', name: 'captcha'})}
+      </div>}
       <div>
         <button>
           Login

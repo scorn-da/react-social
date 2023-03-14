@@ -1,12 +1,14 @@
-import { authAPI } from "src/api/api";
+import { authAPI, securityAPI } from "src/api/api";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'react-social/auth/SET_USER_DATA';
+const GET_CAPTCHA_URL_SUCCESS = 'react-social/auth/GET_CAPTCHA_URL_SUCCESS';
 
 const initialState = {
   userId: null,
   email: null,
   login: null,
+  captchaUrl: null,
   isLoading: false,
   isAuthed: false,
 };
@@ -14,6 +16,7 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA:
+    case GET_CAPTCHA_URL_SUCCESS:
       return {
         ...state,
         ...action.payload,
@@ -35,6 +38,15 @@ export const setAuthedUserData = (userId, email, login, isAuthed) => {
   }
 };
 
+export const getCaptchaUrlSuccess = (captchaUrl) => {
+  return {
+    type: GET_CAPTCHA_URL_SUCCESS,
+    payload: {
+      captchaUrl,
+    }
+  }
+};
+
 export const getAuthedData = () => async (dispatch) => {
   const response = await authAPI.getAuth();
 
@@ -44,12 +56,21 @@ export const getAuthedData = () => async (dispatch) => {
   }
 }
 
-export const login = (email, password, rememberMe) => async (dispatch) => {
-  const response = await authAPI.login(email, password, rememberMe);
+export const getCaptchaUrl = () => async (dispatch) => {
+  const response = await securityAPI.getCaptchaUrl();
+  const captchaUrl = response.url;
+  dispatch(getCaptchaUrlSuccess(captchaUrl));
+}
+
+export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
+  const response = await authAPI.login(email, password, rememberMe, captcha);
 
   if (response.data.resultCode === 0) {
     dispatch(getAuthedData(email, password, rememberMe, true));
   } else {
+    if (response.data.resultCode === 10) {
+      dispatch(getCaptchaUrl());
+    }
     let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
     dispatch(stopSubmit('login', { _error: message }));
   }
