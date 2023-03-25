@@ -17,8 +17,17 @@ import store from "src/redux/reduxStore";
 const DialogsPage = React.lazy(() => import("src/pages/dialogs/DialogsPage"))
 
 class App extends Component {
+  catchAllUnhandledErrors = () => {
+    alert("Some unhandled error");
+  }
+
   componentDidMount() {
     this.props.initializedSuccessfully();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
 
   render() {
@@ -33,11 +42,14 @@ class App extends Component {
         <Content>
           <React.Suspense>
             <Routes>
-              <Route exact path="/profile/" element={<ProfilePage/>}/>
               <Route path="/profile/:userId" element={<ProfilePage/>}/>
-              <Route exact path="/dialogs" element={<DialogsPage/>}/>
-              <Route exact path="/users" element={<UsersPage/>}/>
-              <Route exact path="/login" element={<LoginPage/>}/>
+
+              <Route path="/profile/" element={<ProfilePage/>}/>
+              <Route path="/dialogs" element={<DialogsPage/>}/>
+              <Route path="/users" element={<UsersPage/>}/>
+              <Route path="/login" element={<LoginPage/>}/>
+
+              <Route path="*" element={<div>Not found</div>}/>
             </Routes>
           </React.Suspense>
         </Content>
